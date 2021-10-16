@@ -33,5 +33,13 @@ public class ChatBot {
                 break;
             }
         }
+
+        System.out.println("Now I will prove to you that I can count to any number you want.");
+
+        int counter = scanner.nextInt();
+
+        for (int i = 0; i <= counter; i++) {
+            System.out.println(i + " !");
+        }
     }
 }
