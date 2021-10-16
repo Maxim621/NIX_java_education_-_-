@@ -41,5 +41,28 @@ public class ChatBot {
         for (int i = 0; i <= counter; i++) {
             System.out.println(i + " !");
         }
+
+        System.out.println("Let's test your programming knowledge.\nWhat will the next program output?\n" +
+                "Integer i1 = 10;\nInteger i2 = 10;\nSystem.out.println(i1 == i2);\nSystem.out.println(i1 == 10);\n" +
+                "1. true true.\n2. true false.\n3. false false.\n4. false true.");
+
+        do {
+            response = scanner.nextLine();
+            switch (response) {
+                case "1":
+                    System.out.println("Great, you right!\nGoodbye, have a nice day!");
+                    System.exit(0);
+                    break;
+                case "2":
+                    System.out.println("Please, try again.");
+                    break;
+                case "3":
+                    System.out.println("Please, try again.");
+                    break;
+                case "4":
+                    System.out.println("Please, try again.");
+                    break;
+            }
+        } while (true);
     }
 }
