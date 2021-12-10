@@ -24,20 +24,20 @@ public class ChoiceOfActions {
                 int coffeeSelection = scanner.nextInt();
 
                 switch (coffeeSelection) {
-                        case 1:
-                            espresso(availWater, availMilk, availBeans, availCups, availMoney);
-                            break;
-                        case 2:
-                            latte(availWater, availMilk, availBeans, availCups, availMoney);
-                            break;
-                        case 3:
-                            cappuccino(availWater, availMilk, availBeans, availCups, availMoney);
-                            break;
-                        default:
-                            System.out.println("Unacceptable value, enter \"1\", \"2\" or \"3\"");
-                            break;
-                    }
+                    case 1:
+                        espresso(availWater, availMilk, availBeans, availCups, availMoney);
+                        break;
+                    case 2:
+                        latte(availWater, availMilk, availBeans, availCups, availMoney);
+                        break;
+                    case 3:
+                        cappuccino(availWater, availMilk, availBeans, availCups, availMoney);
+                        break;
+                    default:
+                        System.out.println("Unacceptable value, enter \"1\", \"2\" or \"3\"");
+                        break;
                 }
+            }
 
             if (option.equals("fill")) {
                 fillIngredients();
@@ -61,7 +61,7 @@ public class ChoiceOfActions {
         }
     }
 
-   private void info(int water, int milk, int beans, int cups, int money) {
+    private void info(int water, int milk, int beans, int cups, int money) {
         System.out.println("The coffee machine has:\n" +
                 water + " of water\n" +
                 milk + " of milk\n" +

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="393c8246-8d3e-4c03-9c80-5e1e99f3d5b5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/nix/education/java/coffeemachine/ChoiceOfActions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/nix/education/java/coffeemachine/ChoiceOfActions.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
