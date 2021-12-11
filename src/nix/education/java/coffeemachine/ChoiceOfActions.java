@@ -3,14 +3,16 @@ package nix.education.java.coffeemachine;
 import java.util.Scanner;
 
 public class ChoiceOfActions {
-    protected void action(String option) {
-        int availWater = 400;
-        int availMilk = 540;
-        int availBeans = 120;
-        int availMoney = 550;
-        int availCups = 9;
+    private int availWater = 400;
+    private int availMilk = 540;
+    private int availBeans = 120;
+    private int availMoney = 550;
+    private int availCups = 9;
 
-        Scanner scanner = new Scanner(System.in);
+    Scanner scanner = new Scanner(System.in);
+
+    protected void action(String option) {
+
         ChoiceOfActions information = new ChoiceOfActions();
 
         while (true) {
@@ -23,90 +25,13 @@ public class ChoiceOfActions {
 
                 switch (coffeeSelection) {
                     case 1:
-                        availWater = availWater - 250;
-                        availBeans = availBeans - 16;
-                        availMoney = availMoney + 4;
-                        availCups = availCups - 1;
-                        if (availWater < 0) {
-                            System.out.println("Sorry, not enough water!");
-                            availBeans = availBeans + 16;
-                            availMoney = availMoney - 4;
-                            availCups = availCups + 1;
-                        } else if (availBeans < 0) {
-                            System.out.println("Sorry, not enough coffee beans!");
-                            availWater = availWater + 250;
-                            availMoney = availMoney - 4;
-                            availCups = availCups + 1;
-                        } else if (availCups < 0) {
-                            System.out.println("Sorry, not enough Cups!");
-                            availWater = availWater + 250;
-                            availBeans = availBeans + 16;
-                            availMoney = availMoney - 4;
-                        }
+                        espresso(availWater, availMilk, availBeans, availCups, availMoney);
                         break;
                     case 2:
-                        availWater = availWater - 350;
-                        availMilk = availMilk - 75;
-                        availBeans = availBeans - 20;
-                        availMoney = availMoney + 7;
-                        availCups = availCups - 1;
-                        if (availWater < 0) {
-                            System.out.println("Sorry, not enough water!");
-                            availMilk = availMilk + 75;
-                            availBeans = availBeans + 20;
-                            availMoney = availMoney - 7;
-                            availCups = availCups + 1;
-                        } else if (availMilk < 0) {
-                            System.out.println("Sorry, not enough milk!");
-                            availWater = availWater + 350;
-                            availBeans = availBeans + 20;
-                            availMoney = availMoney - 7;
-                            availCups = availCups + 1;
-                        } else if (availBeans < 0) {
-                            System.out.println("Sorry, not enough coffee beans!");
-                            availWater = availWater + 350;
-                            availMilk = availMilk + 75;
-                            availMoney = availMoney - 7;
-                            availCups = availCups + 1;
-                        } else if (availCups < 0) {
-                            System.out.println("Sorry, not enough Cups!");
-                            availWater = availWater + 350;
-                            availMilk = availMilk + 75;
-                            availBeans = availBeans + 20;
-                            availMoney = availMoney - 7;
-                        }
+                        latte(availWater, availMilk, availBeans, availCups, availMoney);
                         break;
                     case 3:
-                        availWater = availWater - 200;
-                        availMilk = availMilk - 100;
-                        availBeans = availBeans - 12;
-                        availMoney = availMoney + 6;
-                        availCups = availCups - 1;
-                        if (availWater < 0) {
-                            System.out.println("Sorry, not enough water!");
-                            availMilk = availMilk + 100;
-                            availBeans = availBeans + 12;
-                            availMoney = availMoney - 6;
-                            availCups = availCups + 1;
-                        } else if (availMilk < 0) {
-                            System.out.println("Sorry, not enough milk!");
-                            availWater = availWater + 200;
-                            availBeans = availBeans + 12;
-                            availMoney = availMoney - 6;
-                            availCups = availCups + 1;
-                        } else if (availBeans < 0) {
-                            System.out.println("Sorry, not enough coffee beans!");
-                            availWater = availWater + 200;
-                            availMilk = availMilk + 100;
-                            availMoney = availMoney - 6;
-                            availCups = availCups + 1;
-                        } else if (availCups < 0) {
-                            System.out.println("Sorry, not enough Cups!");
-                            availWater = availWater + 200;
-                            availMilk = availMilk + 100;
-                            availBeans = availBeans + 12;
-                            availMoney = availMoney - 6;
-                        }
+                        cappuccino(availWater, availMilk, availBeans, availCups, availMoney);
                         break;
                     default:
                         System.out.println("Unacceptable value, enter \"1\", \"2\" or \"3\"");
@@ -115,18 +40,7 @@ public class ChoiceOfActions {
             }
 
             if (option.equals("fill")) {
-                System.out.println("Write how many ml of water you want to add:");
-                int fillWater = scanner.nextInt();
-                availWater = availWater + fillWater;
-                System.out.println("Write how many ml of milk you want to add:");
-                int fillMilk = scanner.nextInt();
-                availMilk = availMilk + fillMilk;
-                System.out.println("Write how many grams of coffee beans you want to add:");
-                int fillBeans = scanner.nextInt();
-                availBeans = availBeans + fillBeans;
-                System.out.println("Write how many disposable coffee cups you want to add:");
-                int fillCups = scanner.nextInt();
-                availCups = availCups + fillCups;
+                fillIngredients();
             }
 
             if (option.equals("take")) {
@@ -147,12 +61,80 @@ public class ChoiceOfActions {
         }
     }
 
-   private void info(int water, int milk, int beans, int cups, int money) {
+    private void info(int water, int milk, int beans, int cups, int money) {
         System.out.println("The coffee machine has:\n" +
                 water + " of water\n" +
                 milk + " of milk\n" +
                 beans + " of coffee beans\n" +
                 cups + " of disposable cups\n" +
                 money + " of money\n");
+    }
+
+    private void fillIngredients() {
+        System.out.println("Write how many ml of water you want to add:");
+        int fillWater = scanner.nextInt();
+        System.out.println("Write how many ml of milk you want to add:");
+        int fillMilk = scanner.nextInt();
+        System.out.println("Write how many grams of coffee beans you want to add:");
+        int fillBeans = scanner.nextInt();
+        System.out.println("Write how many disposable coffee cups you want to add:");
+        int fillCups = scanner.nextInt();
+        controlIngredients(-fillWater, -fillMilk, -fillBeans, -fillCups, 0);
+    }
+
+    private void controlIngredients(int water, int milk, int beans, int cups, int money) {
+        availWater -= water;
+        availMilk -= milk;
+        availBeans -= beans;
+        availMoney += money;
+        availCups -= cups;
+    }
+
+    private void espresso(int water, int milk, int beans, int cups, int money) {
+        controlIngredients(250, 0, 16, 1, 4);
+        if (availWater < 0) {
+            System.out.println("Sorry, not enough water!");
+            controlIngredients(-250, 0, -16, -1, -4);
+        } else if (availBeans < 0) {
+            System.out.println("Sorry, not enough coffee beans!");
+            controlIngredients(-250, 0, -16, -1, -4);
+        } else if (availCups < 0) {
+            System.out.println("Sorry, not enough Cups!");
+            controlIngredients(-250, 0, -16, -1, -4);
+        }
+    }
+
+    private void latte(int water, int milk, int beans, int cups, int money) {
+        controlIngredients(350, 75, 20, 1, 7);
+        if (availWater < 0) {
+            System.out.println("Sorry, not enough water!");
+            controlIngredients(-350, -75, -20, -1, -7);
+        } else if (availMilk < 0) {
+            System.out.println("Sorry, not enough milk!");
+            controlIngredients(-350, -75, -20, -1, -7);
+        } else if (availBeans < 0) {
+            System.out.println("Sorry, not enough coffee beans!");
+            controlIngredients(-350, -75, -20, -1, -7);
+        } else if (availCups < 0) {
+            System.out.println("Sorry, not enough Cups!");
+            controlIngredients(-350, -75, -20, -1, -7);
+        }
+    }
+
+    private void cappuccino(int water, int milk, int beans, int cups, int money) {
+        controlIngredients(200, 100, 12, 1, 6);
+        if (availWater < 0) {
+            System.out.println("Sorry, not enough water!");
+            controlIngredients(-200, -100, -12, -1, -6);
+        } else if (availMilk < 0) {
+            System.out.println("Sorry, not enough milk!");
+            controlIngredients(-200, -100, -12, -1, -6);
+        } else if (availBeans < 0) {
+            System.out.println("Sorry, not enough coffee beans!");
+            controlIngredients(-200, -100, -12, -1, -6);
+        } else if (availCups < 0) {
+            System.out.println("Sorry, not enough Cups!");
+            controlIngredients(-200, -100, -12, -1, -6);
+        }
     }
 }
